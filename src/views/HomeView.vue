@@ -5,6 +5,13 @@ export default {
       username: "",
     };
   },
+  methods: {
+    login() {
+      this.$router.push({
+        path: "/chats",
+      });
+    },
+  },
 };
 </script>
 
@@ -16,5 +23,6 @@ export default {
       placeholder="Introduce tu nombre de usuario"
       v-model="username"
     />
+    <button @click="login">Iniciar sesión</button>
   </main>
 </template>
