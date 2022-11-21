@@ -69,6 +69,13 @@ const router = createRouter({
   ]
 })
 
+if(stage === 'test') {
+  router.addRoute({
+    path: '/profile',
+    component: () => import('../views/Profile.vue')
+  })
+}
+
 router.beforeEach((to, from, next) => {
   if(to.name === 'chats' && (!sessionStorage.toRequiresAuth && !localStorage.toRequiresAuth)) {
     next('/session');
