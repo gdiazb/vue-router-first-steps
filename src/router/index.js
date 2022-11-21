@@ -40,14 +40,6 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/about',
-      name: 'about',
-      params: {
-        requiresAuth: false
-      },
-      component: () => import('../views/AboutView.vue')
-    },
     { 
       path: '/chats',
       name: 'chats',

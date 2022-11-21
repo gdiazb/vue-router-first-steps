@@ -9,3 +9,38 @@
   min-height: calc(100vh - 42px);
   margin-top: 42px;
 }
+
+.home {
+  padding: 70px 0 50px;
+  text-align: center;
+  background-color: #f7f0ff;
+  min-height: calc(100vh - 42px);
+}
+
+.home__img {
+  display: block;
+  margin: 30px auto;
+  width: 500px;
+}
+
+.home__input,
+.home__btn {
+  padding: 6px;
+  border: 1px solid #ddd8e2;
+  border-radius: 4px;
+}
+
+.home__input {
+  min-width: 200px;
+  outline-color: rgba(162, 77, 247, 0.3);
+}
+
+.home__btn {
+  color: #fff;
+  background-color: #a24df7;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #b672fa;
+  }
+}
