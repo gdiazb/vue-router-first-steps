@@ -33,33 +33,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      chats: [
-        { id: 1, name: "Ximena" },
-        { id: 2, name: "Diana" },
-        { id: 3, name: "Steven" },
-        { id: 4, name: "Invierno" },
-      ],
-    };
+<script setup>
+import { ref, watch, computed } from "vue";
+import { useRoute } from "vue-router";
+const chats = ref();
+
+const route = useRoute();
+
+const chatSelected = computed(() => {
+  return route.path !== "/chats" ? false : true;
+});
+
+watch(
+  () => route.params,
+  (val) => {
+    console.log("update params", val);
+    chats.value = [
+      { id: 1, name: "Ximena" },
+      { id: 2, name: "Diana" },
+      { id: 3, name: "Steven" },
+      { id: 4, name: "Invierno" },
+    ];
   },
-  computed: {
-    chatSelected() {
-      return this.$route.path !== "/chats" ? false : true;
-    },
-  },
-  created() {
-    this.$watch(
-      () => this.$route.params,
-      (val) => {
-        console.log("update params", val);
-      },
-      { inmediate: true }
-    );
-  },
-};
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <style lang="scss" scoped>

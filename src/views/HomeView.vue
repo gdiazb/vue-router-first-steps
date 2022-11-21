@@ -1,20 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-      username: "",
-    };
-  },
-  methods: {
-    login() {
-      this.$router.push({
-        path: "/chats",
-      });
-    },
-  },
-};
-</script>
-
 <template>
   <main>
     <h3>Hola {{ username }}</h3>
@@ -26,3 +9,15 @@ export default {
     <button @click="login">Iniciar sesión</button>
   </main>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const username = ref();
+const router = useRouter();
+
+function login() {
+  router.push({ path: "/chats" });
+}
+</script>
