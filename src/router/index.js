@@ -1,13 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue"
+import NotFoundView from "../views/NotFoundView.vue"
+
+const stage = import.meta.env.VITE_STAGE
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    // {
-    //   path: '/home',
-    //   redirect: { name: 'home' }
-    // },
+    {
+      path: '/404',
+      name: 'notFound',
+      component: NotFoundView,
+    },
+    {
+      path: '/:catchAll(.*)', redirect: { name: 'notFound' }
+    },
     {
       path: '/',
       name: 'home',
@@ -49,7 +56,7 @@ const router = createRouter({
       },
       component: () => import('../views/Chats/index.vue'),
       children: [{
-        path: ':chatId',
+        path: ':chatId(\\d+)',
         component: () => import('../views/Chat/index.vue'),
         // props: true
         props: (route) => {
