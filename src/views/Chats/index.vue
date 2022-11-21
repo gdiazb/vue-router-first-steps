@@ -50,6 +50,15 @@ export default {
       return this.$route.path !== "/chats" ? false : true;
     },
   },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      (val) => {
+        console.log("update params", val);
+      },
+      { inmediate: true }
+    );
+  },
 };
 </script>
 

@@ -12,11 +12,17 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      alias: '/home'
+      alias: '/home',
+      params: {
+        requiresAuth: false
+      }
     },
     {
       path: '/session',
       component: () => import('../views/Session/index.vue'),
+      params: {
+        requiresAuth: false
+      },
       children: [
         { 
           path: '',
@@ -30,10 +36,17 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
+      params: {
+        requiresAuth: false
+      },
       component: () => import('../views/AboutView.vue')
     },
     { 
       path: '/chats',
+      name: 'chats',
+      params: {
+        requiresAuth: true
+      },
       component: () => import('../views/Chats/index.vue'),
       children: [{
         path: ':chatId',
@@ -44,14 +57,15 @@ const router = createRouter({
             chatId: route.params.chatId
           }
         }
-      }]
+      }],
     },
   ]
 })
 
-router.beforeEach((to, from) => {
-  console.log(to, from)
-  return true
+router.beforeEach((to, from, next) => {
+  if(to.name === 'chats' && (!sessionStorage.toRequiresAuth && !localStorage.toRequiresAuth)) {
+    next('/session');
+  } else next()
 })
 
 export default router;
