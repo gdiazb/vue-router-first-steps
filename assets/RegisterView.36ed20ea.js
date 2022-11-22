@@ -1,0 +1,1 @@
+import{_ as e,o as s,c as t,b as c}from"./index.df3f6ce2.js";const o={},r={class:"register"},_=c("h2",{class:"register__title"},"Resgistrate",-1),a=[_];function i(n,d){return s(),t("div",r,a)}const f=e(o,[["render",i]]);export{f as default};

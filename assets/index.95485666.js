@@ -1,0 +1,1 @@
+import{_ as n,r as s,o as t,c as _,a as o}from"./index.df3f6ce2.js";const r={},c={class:"session__grid"};function a(i,d){const e=s("router-view");return t(),_("div",c,[o(e),o(e,{name:"register"})])}const m=n(r,[["render",a]]);export{m as default};
